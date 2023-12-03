@@ -34,6 +34,8 @@ function App() {
         config={config}
         messageParser={MessageParser}
         actionProvider={ActionProvider}
+        headerText='Adopt-chat'
+        placeholderText='Escribe tu mensaje'
       />
       )}
         <button 
