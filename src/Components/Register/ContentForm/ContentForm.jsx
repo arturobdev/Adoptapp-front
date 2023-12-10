@@ -5,6 +5,7 @@ import InputRadioGroup from "../../Inputs/InputRadioGroup/InputRadioGroup"
 import showPass from '../../../assets/eye-password/show-password.svg'
 import hidePass from '../../../assets/eye-password/hide-password.svg'
 import CheckboxInput from "../../Inputs/CheckboxInput/CheckboxInput"
+import { Link } from "react-router-dom"
 
 const locationOptions = [
     { labelContent: 'Ushuaia', value: '9410' },
@@ -13,8 +14,8 @@ const locationOptions = [
 ];
 
 const livingPlaceOptions = [
-    { labelContent: 'Casa', value: 'casa' },
-    { labelContent: 'Departamento', value: 'departamento' },
+    { labelContent: 'Casa', value: 'Casa' },
+    { labelContent: 'Departamento', value: 'Departamento' },
 ];
 
 const hasPetOptions = [
@@ -42,6 +43,7 @@ export const ContentForm = ({ formData, handleRegisterChange, handleCheckboxChan
                     name="name"
                     value={formData.name}
                     onChange={handleRegisterChange}
+                    isRequired={true}
                 />
                 <TextInput
                     className='register'
@@ -51,6 +53,7 @@ export const ContentForm = ({ formData, handleRegisterChange, handleCheckboxChan
                     name="surname"
                     value={formData.surname}
                     onChange={handleRegisterChange}
+                    isRequired={true}
                 />
                 <TextInput
                     className='register'
@@ -60,6 +63,7 @@ export const ContentForm = ({ formData, handleRegisterChange, handleCheckboxChan
                     name="address"
                     value={formData.address}
                     onChange={handleRegisterChange}
+                    isRequired={true}
                 />
                 <TextInput
                     className='register'
@@ -71,6 +75,7 @@ export const ContentForm = ({ formData, handleRegisterChange, handleCheckboxChan
                     value={formData.email}
                     isUseRef={formData.email}
                     onChange={handleRegisterChange}
+                    isRequired={true}
                 />
                 <TextInput
                     className='register pass-div'
@@ -82,6 +87,7 @@ export const ContentForm = ({ formData, handleRegisterChange, handleCheckboxChan
                     value={formData.password}
                     isUseRef={formData.password}
                     onChange={handleRegisterChange}
+                    isRequired={true}
                 >
                     <button type='button' className='button-pass-register' onClick={handleTooglePass}>
                         <img src={isShowPass ? showPass : hidePass} alt="" />
@@ -98,48 +104,49 @@ export const ContentForm = ({ formData, handleRegisterChange, handleCheckboxChan
                 <TextInput
                     className='register'
                     label="Numero de telefono"
-                    placeholder="2901xxxxxx"
-                    type="number"
-                    id="telefono"
-                    name="phoneNumber"
-                    min="8"
+                    placeholder={"Ej : 2901826362"}
+                    type={"number"}
+                    id={"telefono"}
+                    name={"phoneNumber"}
+                    min={"8"}
                     value={formData.phoneNumber}
                     isUseRef={formData.phoneNumber}
                     onChange={handleRegisterChange}
+                    isRequired={true}
                 />
             </div >
-            <div className='radio-input-form'>
+            <div className={'radio-input-form'}>
                 <InputRadioGroup
-                    title="Localidad"
+                    title={"Localidad"}
                     options={locationOptions}
-                    name="zipCode"
+                    name={"zipCode"}
                     onChange={handleRegisterChange}
                 />
                 <InputRadioGroup
-                    title="¿Dónde vive?"
+                    title={"¿Dónde vive?"}
                     options={livingPlaceOptions}
-                    name="livingPlace"
+                    name={"livingPlace"}
                     onChange={handleRegisterChange}
                 />
                 <InputRadioGroup
-                    title="¿Tiene mascota?"
+                    title={"¿Tiene mascota?"}
                     options={hasPetOptions}
-                    name="hasPet"
+                    name={"hasPet"}
                     onChange={handleRegisterChange}
                 />
             </div>
-            <div className='checkbox-input-form'>
+            <div className={'checkbox-input-form'}>
                 <CheckboxInput
-                    labelContent='Soy mayor de 21 años'
-                    type="checkbox"
-                    name="availableAge"
+                    labelContent={'Soy mayor de 21 años'}
+                    type={"checkbox"}
+                    name={"availableAge"}
                     value={formData.availableAge}
                     onChange={handleCheckboxChange}
                 />
                 <CheckboxInput
-                    labelContent='Acepto los terminos y condiciones'
-                    type="checkbox"
-                    name="termsAndCondition"
+                    labelContent={ <> Acepto los <Link className="terms-conditions"> Términos y condiciones </Link> </>}
+                    type={"checkbox"}
+                    name={"termsAndCondition"}
                     value={formData.termsAndCondition}
                     onChange={handleCheckboxChange}
                 />

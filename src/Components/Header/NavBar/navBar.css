@@ -85,7 +85,14 @@ nav {
 	color: var(--white-color);
 	border: .5px solid var(--white-color);
 	padding: 5px 10px;
-	border-radius: 5px;
+	border-radius: 10px;
+	font-size: 1.1rem;
+	transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+	box-shadow: 0 2px 4px rgba(240, 179, 179, 0.2);
+}
+
+.user-login-button:hover {
+	box-shadow: 0 4px 8px rgba(241, 177, 177, 0.3);
 }
 
 .btn-profile {
@@ -94,10 +101,9 @@ nav {
 	border-radius: 50px;
 	background-color: azure;
 	color: gray;
-	padding: 0 1rem;
 	text-transform: uppercase;
 	font-weight: 600;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	text-align: center;
 }
 
