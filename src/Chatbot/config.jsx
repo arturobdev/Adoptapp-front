@@ -5,7 +5,7 @@ import Quiz from "./Quiz/Quiz";
 export const config = {
   botName: "Adopt-chat",
   initialMessages: [
-    createChatBotMessage(`Hola! Como podemos ayudarte?`, {
+    createChatBotMessage(`¡Hola! ¿Cómo podemos ayudarte?`, {
       widget: "options",
     }),
   ],
@@ -20,15 +20,15 @@ export const config = {
       props: {
         questions: [
           {
-            question: "Como puedo Adoptar?",
+            question: "¿Cómo puedo Adoptar?",
             answer:
-              "Debes ser mayor de 21 años, estar registrado. Luego de seleccionar la mascota interesada, se llevara adelante un asesoramiento para completar la adopcion.",
+              "Debes ser mayor de 21 años, estar registrado. Luego de seleccionar la mascota interesada, se llevará adelante un asesoramiento para completar la adopción.",
             id: 1,
           },
           {
-            question: "Hay algo mas que debo saber?",
+            question: "¿Hay algo más que debo saber?",
             answer:
-              "Si! Cada solicitud es analizada por un experto para garantizar el bienestar del adoptante y la mascota.",
+              "¡Si! Cada solicitud es analizada por un experto para garantizar el bienestar del adoptante y la mascota.",
             id: 2,
           },
         ]
@@ -40,15 +40,15 @@ export const config = {
             props: {
               questions: [
                 {
-                  question: "Como puedo denunciar?",
+                  question: "¿Cómo puedo denunciar?",
                   answer:
-                    "Ingresa a la sección 'Denuncias' y carga la informacion que desees compartir o denunciar.",
+                    "Ingresá a la sección 'Denuncias' y carga la información que desees compartir o denunciar.",
                   id: 3,
                 },
                 {
-                  question: "Hay algo mas que debo saber?",
+                  question: "¿Hay algo más que debo saber?",
                   answer:
-                    "Si! Aunque cada denuncia es anonima, se solicitan los datos para corroborar cada hecho.",
+                    "¡Si! Aunque cada denuncia es anónima, se solicitan los datos para corroborar cada hecho.",
                   id: 4,
                 },
               ],
@@ -60,15 +60,15 @@ export const config = {
             props: {
               questions: [
                 {
-                  question: "Como puedo donar?",
+                  question: "¿Cómo puedo colaborar?",
                   answer:
-                    "Ingresa a la opcion 'Ayudar' y contacta con nosotros.",
+                    "Ingresá a la opción 'Colaborar' y contactate con nosotros.",
                   id: 1,
                 },
                 {
-                  question: "Hay algo mas que debo saber?",
+                  question: "¿Hay algo más que debo saber?",
                   answer:
-                    "Si! Tu contribucion nos ayuda a brindar bienestar a cada mascota que espera por una nueva familia.",
+                    "¡Si! Tu contribución nos ayuda a brindar bienestar a cada mascota que espera por una nueva familia.",
                   id: 2,
                 },
               ],
