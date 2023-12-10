@@ -3,32 +3,24 @@ import { useForm } from "../../hooks/useForm";
 import { useState } from "react";
 import { restorePass } from "../../Services/authServices.mjs";
 
-import './resetPassword.css'
+import { getValidateEmail } from "../../Services/validateForms.mjs";
+import { useAsync } from "../../hooks/useAsync";
 
+import './resetPassword.css'
 
 export const ResetPasswordModal = () => {
 
-    const [isValidEmail, setIsValidEmail] = useState(null);
-    const [isLoading, setIsLoading] = useState(null);
-    const [wasSent, setWasSent] = useState(null)
-    const [formData, ,handleInputChange] = useForm({
+    const { isLoading, error, success, execute } = useAsync(restorePass);
+    const [formData, , handleInputChange, , reset] = useForm({
         email: ''
     })
 
     const handleSubmitForm = async (e) => {
         e.preventDefault();
-        try {
-            setIsLoading(true);
-            await restorePass(formData);
-            setWasSent(true);
-            setIsValidEmail(true);
-            setIsLoading(false)
+        if (getValidateEmail(formData.email)) {
+            execute(formData)
         }
-        catch (error) {
-            setWasSent(true);
-            setIsValidEmail(false);
-            setIsLoading(false)
-        }
+        alert('Por favor ingresa una direccion de mail válida')
     }
 
     return (
@@ -57,10 +49,10 @@ export const ResetPasswordModal = () => {
 
             </form>
             <div className="restore-pass-error">
-                {(wasSent && !isValidEmail) && (
+                {error && (
                     <p className="error-message">No tenemos registrado usuario con el correo proporcionado. </p>
                 )}
-                {(wasSent && isValidEmail) && (
+                {success && (
                     <p className="success-message"> Revisa tu bandeja de correo, te enviamos las instrucciones para continuar con el restablecimiento de tu contraseña.</p>
                 )}
             </div>
