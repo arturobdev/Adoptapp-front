@@ -14,8 +14,8 @@ const locationOptions = [
 ];
 
 const livingPlaceOptions = [
-    { labelContent: 'Casa', value: 'casa' },
-    { labelContent: 'Departamento', value: 'departamento' },
+    { labelContent: 'Casa', value: 'Casa' },
+    { labelContent: 'Departamento', value: 'Departamento' },
 ];
 
 const hasPetOptions = [
