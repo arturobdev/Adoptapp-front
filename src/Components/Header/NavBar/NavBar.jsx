@@ -49,7 +49,7 @@ export const NavBar = () => {
                         <Link to='/informacion' onClick={() => scrollToTopJs()} >Información</Link>
                     </li>
                     <li className="link-item">
-                        <Link to='/donaciones' onClick={() => scrollToTopJs()} >Ayudar</Link>
+                        <Link to='/donaciones' onClick={() => scrollToTopJs()} >Colaborar</Link>
                     </li>
                     <li className="link-item">
                         {logged ?

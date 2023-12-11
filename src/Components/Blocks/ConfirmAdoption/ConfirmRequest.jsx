@@ -6,14 +6,15 @@ import { addNewPet } from '../../../Services/userServices.mjs';
 
 import './confirmRequest.css';
 
-export const ConfirmRequest = ({ petName, petId, userId, isOpenModal, setIsOpenModal }) => {
+export const ConfirmRequest = ({ petName, petId, userId, isOpenModal, setIsOpenModal, token }) => {
 
     const { isLoading, error, success, execute } = useAsync(addNewPet);
 
     const hadleSentRequest = () => {
-        execute({ userId: userId, petId: petId })
+        execute({ userId: userId, petId: petId }, token)
     }
 
+    console.log(token)
     return (
         <Modal
             modalNumber={2}
@@ -21,7 +22,7 @@ export const ConfirmRequest = ({ petName, petId, userId, isOpenModal, setIsOpenM
             closeModal={() => setIsOpenModal(false)}
         >
             <div className='request-container'>
-                <p> Esta interesado en adoptapp a {petName}, confirme la solicitud y un especialista lo contactará a la brevedad para continuar con el proceso de adopcion responsable.</p>
+                <p> Esta interesado en adoptar a {petName}, confirme la solicitud y un especialista lo contactará a la brevedad para continuar con el proceso de adopcion responsable.</p>
                 <p className='adopt-greetin'>Equipo de Adopciones.</p>
                 <p className='signature'>Adoptapp </p>
                 <div className='btn-request-container'>
@@ -32,8 +33,8 @@ export const ConfirmRequest = ({ petName, petId, userId, isOpenModal, setIsOpenM
                         : <CircularProgress color='success' />
                     }
                 </div>
-                {(isLoading && success) ?
-                    <p className='request-succes'>Se registro su solicitud. Muchas Gracias.</p> : (!isLoading && error) ?
+                {success ?
+                    <p className='request-succes'>Se registro su solicitud. Muchas Gracias.</p> : error ?
                         <p className='request-reject'>Hubo un error intente nuevamente por favor.</p>
                         : null}
             </div>

@@ -55,9 +55,15 @@ const Card = ({ petImg, description, name, sex, age, attribute, location, id, on
                             </svg>
                         </button>
                     </div> :
-                    <button className='adopt-btn' type='button' value={id} onClick={onClick}>
-                        {logged ? 'Quiero adoptar' : 'Iniciar sesion '}
-                    </button>
+                    (logged ?
+                        <button className='adopt-btn' type='button' value={id} onClick={onClick}>
+                            Quiero adoptar
+                        </button>
+                        :
+                        <button className='adopt-btn' type='button' >
+                            Iniciar sesion
+                        </button>
+                    )
                 }
                 <p className="pet-interested"> {interested}</p>
             </div>

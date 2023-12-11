@@ -1,5 +1,4 @@
 .react-chatbot-kit-chat-bot-message {
-    font-family: var(--p-font);
     background-color: #1d93eccc;
     color: black;
 }
@@ -35,6 +34,10 @@
 }
 
 .react-chatbot-kit-chat-inner-container {
+    font-family: var(--p-font) !important;
     height: 450px;
     background-color: rgb(206, 186, 186)150, 140, 140;
+}
+.react-chatbot-kit-chat-input {
+    font-family: var(--p-font);
 }

@@ -18,7 +18,7 @@ class MessageParser {
         this.actionProvider.handleDenunciarQuiz();
       }
   
-      if (lowercase.includes("donar") || lowercase.includes("como donar") || lowercase.includes("como puedo donar")) {
+      if (lowercase.includes("colaborar") || lowercase.includes("como colaborar") || lowercase.includes("como puedo colaborar")) {
         this.actionProvider.handleDonarQuiz();
       }
     }

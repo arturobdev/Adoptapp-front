@@ -8,6 +8,8 @@ import showPass from '../../assets/eye-password/show-password.svg'
 import hidePass from '../../assets/eye-password/hide-password.svg'
 import { resetPassword } from "../../Services/resetPass";
 import { getValidateForm, getValidatePassword } from "../../Services/validateForms.mjs";
+import { useAsync } from "../../hooks/useAsync";
+import { CircularProgress } from "@mui/joy";
 
 
 export const ResetPasswordWindow = () => {
@@ -15,13 +17,11 @@ export const ResetPasswordWindow = () => {
     const searhParam = new URLSearchParams(location.search);
     const tokenPassword = searhParam.get('reset_password_token');
 
-    const [apiResponse, setApiResponse] = useState('')
-    const [isLoading, setIsLoading] = useState(false);
-    const [wasSent, setIsWasSent] = useState(false);
+    const { isLoading, error, success, execute } = useAsync(resetPassword);
     const [equalPass, setEqualPass] = useState(false)
     const [showFirst, setShowFirst] = useState(false);
     const [showSecond, setShowSecond] = useState(false);
-    const [passwordData, ,handlePasswordChange, ,reset] = useForm({
+    const [passwordData, , handlePasswordChange, , reset] = useForm({
         password: '',
         repeatPassword: ''
     })
@@ -40,28 +40,17 @@ export const ResetPasswordWindow = () => {
         }
     }, [passwordData])
 
-    const validateForm = () => getValidateForm(passwordData) && 
-    getValidatePassword(passwordData.password) 
-    && equalPass
-    
+    const validateForm = () => getValidateForm(passwordData) &&
+        getValidatePassword(passwordData.password)
+        && equalPass
+
     const handleSubmitForm = (event) => {
         event.preventDefault();
         if (validateForm()) {
-            setIsLoading(true)
-            setIsWasSent(true);
-            resetPassword(passwordData, tokenPassword)
-                .then(() => {
-                    setIsLoading(false);
-                    setApiResponse('Se ah reemplazado la contraseña.')
-                    reset()
-                })
-                .catch(err => {
-                    setIsWasSent(true);
-                    setIsLoading(false);
-                    setApiResponse('Error reestableciendo la contraseña.');
-                    reset();
-                    console.error(err)
-                })
+            execute(passwordData, tokenPassword)
+            if (success) {
+                reset();
+            }
         }
         else alert('Por favor ingrese datos validos para continuar')
     }
@@ -73,8 +62,8 @@ export const ResetPasswordWindow = () => {
                 <div className="first-pass-container">
                     <TextInput
                         className={'restored pass-div'}
-                        label={"Contraseña"}
-                        placeholder={"Contraseña"}
+                        label={"Nueva contraseña"}
+                        placeholder={"Ingrese la nueva contraseña"}
                         type={showFirst ? "text" : "password"}
                         id={"password"}
                         name={"password"}
@@ -117,12 +106,13 @@ export const ResetPasswordWindow = () => {
                     <li className="password-info-item">Al menos un carácter especial</li>
                     <li className="password-info-item">Al menos un número</li>
                 </ul>
-                {(!isLoading && !wasSent) ?
+                {(!isLoading) ?
                     <button className='restored-pass-btn'>Enviar</button>
-                    : <p className="sending-pass"> { apiResponse ? apiResponse : 'Confirmando...'} </p>
+                    : <CircularProgress color="success" />
                 }
+                {success ?
+                    <p className="restored-pass-success"> Se ha reemplazado la contraseña con éxito</p> : (error) ? <p className="restored-pass-reject"> Ocurrio un problema intente nuevamente por favor </p> : null}
             </form>
-
         </>
     )
 }

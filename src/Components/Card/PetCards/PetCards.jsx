@@ -11,7 +11,7 @@ const PetCards = ({ petList }) => {
     const [petId, setPetId] = useState(null);
     const [isOpenModal, setIsOpenModal] = useState(false);
 
-    const { user: { logged }, userData: { role, id } } = useContext(AuthContext);
+    const { user: { logged, jwt }, userData: { role, id } } = useContext(AuthContext);
 
     return (
         <>
@@ -42,6 +42,7 @@ const PetCards = ({ petList }) => {
                 petName={petName}
                 petId={petId}
                 userId={id}
+                token={jwt}
             />
         </>
     )

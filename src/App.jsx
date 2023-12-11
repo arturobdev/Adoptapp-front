@@ -16,14 +16,15 @@ import Chatbot from 'react-chatbot-kit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeadset } from '@fortawesome/free-solid-svg-icons'
 
-import {  AuthProvider } from './auth/AuthContext';
+import { AuthProvider } from './auth/AuthContext';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { useState} from 'react';
+import { useState } from 'react';
 
 import './App.css';
 import './Chatbot/styles.css';
 import 'react-chatbot-kit/build/main.css';
+import { ProfilePage } from './utils/ProfilePage/ProfilePage';
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
             <Route path='/denuncias' element={<ComplaintsPage />} />
             <Route path='/informacion' element={<InformationPage />} />
             <Route path='/donaciones' element={<DonationPage />} />
+            <Route path='/perfil' element={<ProfilePage />} />
             <Route path='/user/password/edit' element={<ResetPasswordWindow />} />
           </Routes>
           <Footer />

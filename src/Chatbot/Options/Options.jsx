@@ -10,7 +10,7 @@ const Options = (props) => {
     { text: "Denunciar",
       handler: props.actionProvider.handleDenunciarQuiz,
       id: 2 },
-    { text: "Donar", 
+    { text: "Colaborar", 
       handler: props.actionProvider.handleDonarQuiz, 
       id: 3 },
   ];
