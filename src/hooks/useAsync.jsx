@@ -30,5 +30,7 @@ export const useAsync = (asyncFunction) => {
         success,
         execute,
         data,
+        setError,
+        setSuccess
     }
 }

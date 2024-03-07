@@ -7,8 +7,6 @@ export const postComplaint = async (formData) => {
             "Content-Type": "multipart/form-data"
         }
     })
-    console.log(formData)
-    console.log(response.data)
     return response.data;
 }
 

@@ -5,7 +5,8 @@ import AdoptPage from './Pages/Adoption/AdoptionPage';
 import ComplaintsPage from './Pages/Complaints/ComplaintsPage';
 import InformationPage from './Pages/Information/InformationPage';
 import DonationPage from './Pages/Donations/DonationPage';
-import { ResetPasswordWindow } from './utils/ResetPassword/ResetPasswordWindow';
+import { ResetPasswordWindow } from './Components/ResetPassword/ResetPasswordWindow';
+import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
 
 import { config } from './Chatbot/config';
 import MessageParser from './Chatbot/MessageParser';
@@ -24,7 +25,7 @@ import { useState } from 'react';
 import './App.css';
 import './Chatbot/styles.css';
 import 'react-chatbot-kit/build/main.css';
-import { ProfilePage } from './utils/ProfilePage/ProfilePage';
+
 
 function App() {
 

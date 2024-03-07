@@ -1,11 +1,14 @@
 import MaleImg from '../../assets/masculino.svg';
 import FemaleImg from '../../assets/femenino.svg';
 import { useEffect, useRef, useState } from "react";
+import { Modal } from '../../Components/Modales/Modal';
+
 import './card.css';
 
 const Card = ({ petImg, description, name, sex, age, attribute, location, id, onClick, interested, logged, role }) => {
 
     const [showDescription, setShowDescription] = useState(false);
+    const [ isOpenModal, setIsOpenModal ] = useState(false);
     const isShowDescription = useRef(null);
 
     const handleClick = () => {
@@ -60,9 +63,17 @@ const Card = ({ petImg, description, name, sex, age, attribute, location, id, on
                             Quiero adoptar
                         </button>
                         :
-                        <button className='adopt-btn' type='button' >
+                        <>
+                        <button className='adopt-btn' type='button' onClick={() => setIsOpenModal(true)}>
                             Iniciar sesion
                         </button>
+                        <Modal modalNumber={2}
+                        isOpen={isOpenModal}
+                        closeModal={() => setIsOpenModal(false)}
+                        >
+                        <p className='p-login-required'>Debe iniciar sesión para solicitar una adopción</p>
+                        </Modal>
+                        </>
                     )
                 }
                 <p className="pet-interested"> {interested}</p>

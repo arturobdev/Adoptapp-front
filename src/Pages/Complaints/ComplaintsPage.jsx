@@ -38,7 +38,7 @@ const ComplaintsPage = () => {
                     {complainsList.map((complaint, index) => (
                         <InformationCard
                             key={index}
-                            title={complaint.type === 'Mascota perdida' ? 'Me perdi' : complaint.type === 'Mascota encontrada' ? 'Me econtraron' : complaint.type}
+                            title={complaint.type === 'Mascota perdida' ? 'Me perdi' : complaint.type === 'Mascota encontrada' ? 'Me econtraron' : null}
                             imageUrl={complaint.img_url}
                             body={complaint.description}
                             petName={complaint.petName && complaint.petName}
