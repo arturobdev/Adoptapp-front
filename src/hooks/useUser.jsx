@@ -1,5 +1,4 @@
 import { useCallback, useContext, useState } from "react"
-import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../auth/AuthContext"
 import { loginServices } from "../Services/authServices.mjs";
 import { types } from '../types/types';
@@ -7,7 +6,6 @@ import { scrollToTopJs} from '../constants/scrollToTop.mjs'
 
 export const useUser = () => {
 
-    const navigate = useNavigate();
     const { dispatch } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState({ loading: false, error: false, status: '' });
     
@@ -19,7 +17,8 @@ export const useUser = () => {
 
             window.localStorage.setItem('user_information', JSON.stringify(user_information));
             
-            dispatch({ type: types.login , 
+            dispatch({ 
+                type: types.login , 
                 payload: { 
                     jwt : user_information.jwt, 
                     user : user_information.user 

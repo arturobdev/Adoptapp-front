@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Modal } from '../Modales/Modal'
 import { RegisterForm } from '../Register/RegisterForm'
+import { ResetPasswordModal } from '../ResetPassword/ResetPasswordModal'
 
 import { useState } from 'react'
 import { useForm } from '../../hooks/useForm'
@@ -10,7 +11,7 @@ import showPass from '../../assets/eye-password/show-password.svg'
 import hidePass from '../../assets/eye-password/hide-password.svg'
 
 import './loginScreen.css'
-import { ResetPasswordModal } from '../../utils/ResetPassword/ResetPasswordModal'
+
 
 export const LoginScreen = ({ isLoginSelected, setIsLoginSelected }) => {
 

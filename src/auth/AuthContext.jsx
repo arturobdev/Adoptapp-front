@@ -1,6 +1,6 @@
 import { createContext, useReducer, useEffect, useState } from "react";
 import { AuthReducer } from "./AuthReducer";
-import { decodePayload } from "../constants/Jwt.atob";
+import { decodePayload } from "../utils/Jwt.atob";
 
 const init = () => {
     return JSON.parse(localStorage.getItem('user_information')) || { logged : false} ;
